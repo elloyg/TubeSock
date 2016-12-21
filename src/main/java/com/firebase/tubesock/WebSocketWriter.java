@@ -113,6 +113,7 @@ class WebSocketWriter  {
 
     synchronized void send(byte opcode, boolean masking, byte[] data) throws IOException {
         ByteBuffer frame = frameInBuffer(opcode, masking, data);
+    	System.out.println("####### TUBESOCK ####### send : " + opcode);
         if (stop && (closeSent || opcode != WebSocket.OPCODE_CLOSE)) {
             throw new WebSocketException("Shouldn't be sending");
         }

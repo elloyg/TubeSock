@@ -58,6 +58,7 @@ class WebSocketReceiver {
                     byte[] payload = new byte[(int)payload_length];
                     read(payload, 0, (int)payload_length);
                     if (opcode == WebSocket.OPCODE_CLOSE) {
+                    	System.out.println("####### TUBESOCK ####### run -> onCloseOpReceived");
                         websocket.onCloseOpReceived();
                     } else if (opcode == WebSocket.OPCODE_PONG) {
                         // NOTE: as a client, we don't expect PONGs. No-op
@@ -65,6 +66,7 @@ class WebSocketReceiver {
                             opcode == WebSocket.OPCODE_BINARY ||
                             opcode == WebSocket.OPCODE_PING ||
                             opcode == WebSocket.OPCODE_NONE) {
+                    	System.out.println("####### TUBESOCK ####### run -> appendBytes : " + opcode);
                         // It's some form of application data. Decode the payload
                         appendBytes(fin, opcode, payload);
                     } else {

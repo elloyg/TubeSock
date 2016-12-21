@@ -180,6 +180,7 @@ public class WebSocket {
         if (state == State.CONNECTED) {
             close();
         }
+    	System.out.println("####### TUBESOCK ####### handleReceiverError -> closeSocket");
         closeSocket();
     }
 
@@ -194,7 +195,8 @@ public class WebSocket {
                 return;
             case CONNECTING:
                 // don't wait for an established connection, just close the tcp socket
-                closeSocket();
+            	System.out.println("####### TUBESOCK ####### close -> closeSocket");
+            	closeSocket();
                 return;
             case CONNECTED:
                 // This method also shuts down the writer
@@ -209,6 +211,7 @@ public class WebSocket {
     }
 
     void onCloseOpReceived() {
+    	System.out.println("####### TUBESOCK ####### onCloseOpReceived -> closeSocket");
         closeSocket();
     }
 
